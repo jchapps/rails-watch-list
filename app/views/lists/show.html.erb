@@ -1,13 +1,36 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <i class="fa-solid fa-clapperboard fa-2x"></i>
+    <% end %>
+    <h1 class="navbar-brand" href="#">Movie Night</h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item active">
+          <%= link_to "Movies", lists_path %>
+        </li>
+        <li class="nav-item dropdown">
+          <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Another action", "#", class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 <% @list.bookmarks.each do |bookmark|%>
   <ul>
+    <h1><%= @list.name %></h1>
     <p><%= bookmark.comment %></p>
     <p><%= bookmark.movie.title %></p>
     <li class="list-group-item">
-      <%= link_to "Delete",
-      bookmark_path(bookmark),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      <%= link_to "Delete", bookmark_path(bookmark), class: "btn btn-warning", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
     </li>
   </ul>
 <% end %>
+<div><%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-blue" %></div>
