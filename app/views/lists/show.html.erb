@@ -23,9 +23,11 @@
     </div>
   </div>
 </div>
+<div class="container-fluid">
+  <h1><%= @list.name %></h1>
+</div>
 <% @list.bookmarks.each do |bookmark|%>
   <ul>
-    <h1><%= @list.name %></h1>
     <p><%= bookmark.comment %></p>
     <p><%= bookmark.movie.title %></p>
     <li class="list-group-item">
@@ -34,3 +36,4 @@
   </ul>
 <% end %>
 <div><%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-blue" %></div>
+</div>
