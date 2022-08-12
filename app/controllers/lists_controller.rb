@@ -8,7 +8,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to list_path(@list)
     else
-      render :new, :improcessable_entity
+      render :new, :unprocessable_entity
     end
   end
 
