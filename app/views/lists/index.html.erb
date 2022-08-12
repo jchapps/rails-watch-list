@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center">
   <% @lists.each do |list| %>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="http://source.unsplash.com/featured/?<%= list.name %>+movie&<%= rand(1000) %>)" alt="Card image cap">
+      <img class="card-img-top" src='<%= list.photo.attached? ? cl_image_path(list.photo.key) : "http://source.unsplash.com/featured/?#{list.name}movie&#{rand(1000)}" %>'>
       <div class="card-body">
         <p class="card-text"> <%=link_to list.name, list_path(list) %></p>
       </div>
